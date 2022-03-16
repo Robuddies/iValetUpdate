@@ -16,14 +16,14 @@ const styles = makeStyles({
 })
 
 function Grid(props) {
-    const {icon, title, btnTitle} = props;
+    const {icon, title, btnTitle, btnNavLink} = props;
     const classes = styles(); 
     return (
         <div className={classes.wrapper}>
             <div className={classes.item}>{icon}</div>
             <Typography className={classes.item} variant="h5">{title}</Typography>
             <div className={classes.item}>
-                <RedButton  txt={btnTitle}/>
+                <RedButton  Link={btnNavLink} txt={btnTitle} />
             </div>
         </div>
     )

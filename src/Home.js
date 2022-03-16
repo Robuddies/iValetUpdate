@@ -57,8 +57,8 @@ function Home() {
     return (
       <div className="Home">
         <div className={`${classes.grid} ${classes.bigSpace}`}>
-          <Grid icon={<Key style={{fill: "#c32a2a", height:"125", width:"125"}}/>}  title="" btnTitle="Park Your Car" />
-          <Grid icon={<Ticket style={{fill: "#c32a2a", height:"125", width:"125"}}/>} title="" btnTitle="Find Your Car"/>
+          <Grid icon={<Key style={{fill: "#c32a2a", height:"125", width:"125"}}/>}  title="" btnNavLink='/park_your_car' btnTitle="Park Your Car" />
+          <Grid icon={<Ticket style={{fill: "#c32a2a", height:"125", width:"125"}}/>} title="" btnNavLink='/find_your_car' btnTitle="Find Your Car"/>
         </div>
       </div>
     );
