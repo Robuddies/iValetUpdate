@@ -2,7 +2,7 @@ import React from 'react'
 import { createMuiTheme, ThemeProvider, makeStyles} from '@material-ui/core/styles';
 import NavBar from './components/NavBar'
 import Grid from './components/Grid'
-
+import LoginButton from './components/LoginButton';
 import Ticket from '@material-ui/icons/ConfirmationNumber';
 import Key from '@material-ui/icons/VpnKey';
 
@@ -56,6 +56,7 @@ function Home() {
     const classes = styles();
     return (
       <div className="Home">
+        <LoginButton /> 
         <div className={`${classes.grid} ${classes.bigSpace}`}>
           <Grid icon={<Key style={{fill: "#c32a2a", height:"125", width:"125"}}/>}  title="" btnNavLink='/park_your_car' btnTitle="Park Your Car" />
           <Grid icon={<Ticket style={{fill: "#c32a2a", height:"125", width:"125"}}/>} title="" btnNavLink='/find_your_car' btnTitle="Find Your Car"/>
