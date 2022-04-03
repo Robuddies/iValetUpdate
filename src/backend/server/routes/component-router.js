@@ -1,6 +1,8 @@
 const express = require('express');
 const { sql, poolPromise } = require('../db');
 const router = express.Router();
+const { DateTime } = require('luxon');
+const calculateFee = require('../parkingfee');
 
 const table_name = 'parking_info';
 
@@ -26,7 +28,7 @@ router.get('/nearest_empty', async (req, res) => {
         const result = await pool
             .request()
             .query(
-                `select top 1 from ${table_name} where empty = true and handicap = false order by distance desc`
+                `select top 1 * from ${table_name} where (empty = 1 and handicap = 0) order by distance desc`
             );
 
         res.json(result);
@@ -43,7 +45,7 @@ router.get('/nearest_empty_handicap', async (req, res) => {
         const result = await pool
             .request()
             .query(
-                `select top 1 from ${table_name} where empty = true and handicap = true order by distance desc`
+                `select top 1 * from ${table_name} where (empty = 1 and handicap = 1) order by distance desc`
             );
 
         res.json(result);
@@ -98,7 +100,17 @@ router.get('/calculate_fee/:id', async (req, res) => {
                 `select * from ${table_name} where licence_plate = @input_licence_plate`
             );
 
-        res.json(result);
+        const dateEntered = DateTime.fromISO(
+            await result.recordset[0]['time_parked'].toISOString()
+        );
+
+        const fee = calculateFee(dateEntered);
+
+        res.json({
+            licence_plate: req.params.id,
+            time_entered: dateEntered.toString(),
+            fee: fee,
+        });
     } catch (err) {
         res.status(500);
         res.send(err.message);
