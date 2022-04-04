@@ -3,6 +3,8 @@ const { DateTime } = require('luxon');
 const maxWeekday = 18;
 const maxWeekend = 15;
 
+// Fees based on https://pts.gatech.edu/visitors#anchor2
+
 const calculateFeeHelper = (currFeeTill, exitTime, currFee) => {
     const duration = exitTime.diff(currFeeTill, ['days', 'hours', 'minutes']);
     const currDOW = currFeeTill.weekday;
@@ -34,6 +36,7 @@ const calculateFeeHelper = (currFeeTill, exitTime, currFee) => {
                     currFee + addFee
                 );
             } else {
+                // weekday
                 const timeChangeFee = currFeeTill.set({
                     hour: 20,
                     minutes: 0,
@@ -45,7 +48,7 @@ const calculateFeeHelper = (currFeeTill, exitTime, currFee) => {
                     'hours',
                     'minutes',
                 ]);
-                //weekday
+
                 var hoursWithinPeriod = remainingTime.hours;
                 hoursWithinPeriod += remainingTime.minutes > 0 ? 1 : 0;
                 var addFee = hoursWithinPeriod * 2;
