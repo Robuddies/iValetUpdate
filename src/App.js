@@ -10,12 +10,13 @@ import Home from './Home';
 import Find from './Find';
 import Park from './Park';
 import Exit from './Exit';
+import Details from './Details';
 import React from 'react';
-import { useEffect} from 'react';
+import { useEffect } from 'react';
 import { gapi } from 'gapi-script';
 
-const client_Id = '817198085077-dc3u322nbisnl1llu3q72c65gkjmacpq.apps.googleusercontent.com';
-
+const client_Id =
+    '817198085077-dc3u322nbisnl1llu3q72c65gkjmacpq.apps.googleusercontent.com';
 
 const themey = createTheme({
     pallette: {
@@ -64,12 +65,12 @@ function App() {
     const classes = styles();
     useEffect(() => {
         function start() {
-          gapi.client.init({
-            clientId: client_Id,
-            scope: ""
-          })
-        };
-        
+            gapi.client.init({
+                clientId: client_Id,
+                scope: '',
+            });
+        }
+
         gapi.load('client:auth2', start);
     });
     return (
@@ -80,13 +81,13 @@ function App() {
                     <Routes>
                         <Route path='/' element={<Home />} />
                         <Route path='/park_your_car' element={<Park />} />
+                        <Route path='/input_details' element={<Details />} />
                         <Route path='/find_your_car' element={<Find />} />
                         <Route path='/exit_parking_lot' element={<Exit />} />
                     </Routes>
                 </div>
             </ThemeProvider>
         </div>
-
     );
 }
 

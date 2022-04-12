@@ -1,6 +1,6 @@
-import React from 'react'
-import Exitimage from './Exit.png'
-import LogoutButton from './components/LogoutButton'
+import React from 'react';
+import Exitimage from './Exit.png';
+import LogoutButton from './components/LogoutButton';
 function Exit() {
     return (
         <div>
@@ -9,8 +9,7 @@ function Exit() {
             <h1>Thank you for parking with us!</h1>
             <LogoutButton />
         </div>
-
-    )
+    );
 }
 
-export default Exit
+export default Exit;

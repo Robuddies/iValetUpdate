@@ -118,7 +118,7 @@ router.get('/calculate_fee/:id', async (req, res) => {
 });
 
 // exit parking lot by licence plate
-router.post('/exit/:id', async (req, res) => {
+router.put('/exit/:id', async (req, res) => {
     try {
         const pool = await poolPromise;
 
@@ -160,7 +160,7 @@ router.post('/exit/:id', async (req, res) => {
 });
 
 // enter parking lot by licence plate
-router.post('/park/:id/:lp', async (req, res) => {
+router.put('/park/:id/:lp', async (req, res) => {
     try {
         const pool = await poolPromise;
         await pool
