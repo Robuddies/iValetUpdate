@@ -1,3 +1,4 @@
+import { AlternateEmail } from '@material-ui/icons';
 import React from 'react';
 import api from '../backend/api';
 
@@ -14,7 +15,7 @@ class ParkingForm extends React.Component {
     }
 
     handleChangeLicence(event) {
-        this.setState({ value: event.target.value });
+        this.setState({ licence: event.target.value });
     }
 
     handleChangeHandicap(event) {
@@ -22,24 +23,70 @@ class ParkingForm extends React.Component {
     }
 
     async handleSubmit(event) {
-        alert('A plate was submitted: ' + this.state.value);
-        event.preventDefault();
-        alert(this.state.handicap);
-        await this.parkVehicle(this.state.handicap);
+        if (this.state.licence === '')
+            alert('Please provide your licence plate.');
+        else {
+            alert('A plate was submitted: ' + this.state.licence);
+            // event.preventDefault();
+            await this.parkVehicle().catch((error) => {
+                console.log(error.message);
+                alert(error.message);
+            });
+        }
     }
 
-    async parkVehicle(handicap) {
-        alert(handicap);
-        if (handicap) {
-            // TODO
-            await api.getNearestEmptyHandicap().then((response) => {
-                alert(response);
-            });
+    async parkVehicle() {
+        if (this.state.licence === '')
+            alert('Please provide your licence plate.');
+        else if (this.state.handicap) {
+            await api
+                .getNearestEmptyHandicap()
+                .then((response) => {
+                    const recordset = response.data.recordset;
+                    if (recordset === undefined) {
+                        alert('Error. Please try again.');
+                    } else if (recordset.length === 0) {
+                        alert('No handicap spots available.');
+                    } else {
+                        const result = recordset[0];
+                        const { lot_id } = result;
+                        if (lot_id) {
+                            alert('Park at lot ' + lot_id);
+                            return lot_id;
+                        } else {
+                            alert('Lot ID not found.');
+                            throw new Error('Lot ID not found.');
+                        }
+                    }
+                })
+                .then((lot_id) => {
+                    // TODO
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                    alert(error.message);
+                });
         } else {
-            alert('here');
-            await api.getNearestEmpty().then((response) => {
-                alert(response);
-            });
+            await api
+                .getNearestEmpty()
+                .then((response) => {
+                    const recordset = response.data.recordset;
+                    if (recordset === undefined) {
+                        alert('Error. Please try again.');
+                    } else if (recordset.length === 0) {
+                        alert('Parking lot full!');
+                    } else {
+                        const result = recordset[0];
+
+                        const { lot_id } = result;
+                        if (lot_id) alert('Park at lot ' + lot_id);
+                        else alert('Lot ID not found.');
+                    }
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                    alert(error.message);
+                });
         }
     }
 
@@ -64,7 +111,7 @@ class ParkingForm extends React.Component {
                     Handicap parking
                 </label>
                 <br />
-                <input type='submit' value='Submit' />
+                <input type='submit' value='Find parking' />
             </form>
         );
     }
