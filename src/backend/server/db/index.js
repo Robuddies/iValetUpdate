@@ -1,3 +1,37 @@
+var pg = require('pg');
+
+const host = '70.231.13.237';
+
+const username = 'postgres';
+const password = '123';
+const database = 'PARKING';
+const db_port = 5432;
+
+const Pool = pg.Pool;
+
+const config = {
+    user: username,
+    host: host,
+    database: database,
+    password: password,
+    port: db_port,
+};
+
+const poolPromise = new Pool(config)
+    .connect()
+    .then((pool) => {
+        console.log('Connected to PostgresSQL');
+        return pool;
+    })
+    .catch((err) =>
+        console.log('Database Connection Failed! Bad Config: ', err)
+    );
+
+module.exports = {
+    poolPromise,
+};
+
+/* MSSQL 
 var sql = require('mssql');
 
 const host = '70.231.13.237';
@@ -38,3 +72,4 @@ module.exports = {
     sql,
     poolPromise,
 };
+*/
