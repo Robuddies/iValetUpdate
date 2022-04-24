@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Lot 1</name>
+    <description>Crc custom</description>
+    <Style id="line-A52714-3325-nodesc-normal">
+      <LineStyle>
+        <color>ff1427a5</color>
+        <width>3.325</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="line-A52714-3325-nodesc-highlight">
+      <LineStyle>
+        <color>ff1427a5</color>
+        <width>4.9875</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="line-A52714-3325-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-A52714-3325-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-A52714-3325-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Folder>
+      <name>Line</name>
+      <Placemark>
+        <name>Lot 1</name>
+        <styleUrl>#line-A52714-3325-nodesc</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            -84.4032042,33.7761518,0
+            -84.4031949,33.7762622,0
+            -84.4038037,33.7762978,0
+            -84.4038038,33.7763435,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>
