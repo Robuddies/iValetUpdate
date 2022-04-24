@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
-    <name>Test</name>
-    <description>Crc custom</description>
+    <name>TestCrc1</name>
+    <description/>
     <Style id="icon-1899-0288D1-nodesc-normal">
       <IconStyle>
         <color>ffd18802</color>
@@ -45,56 +45,56 @@
         <styleUrl>#icon-1899-0288D1-nodesc-highlight</styleUrl>
       </Pair>
     </StyleMap>
-    <Style id="line-A52714-3325-nodesc-normal">
+    <Style id="line-A52714-3713-nodesc-normal">
       <LineStyle>
         <color>ff1427a5</color>
-        <width>3.325</width>
+        <width>3.713</width>
       </LineStyle>
       <BalloonStyle>
         <text><![CDATA[<h3>$[name]</h3>]]></text>
       </BalloonStyle>
     </Style>
-    <Style id="line-A52714-3325-nodesc-highlight">
+    <Style id="line-A52714-3713-nodesc-highlight">
       <LineStyle>
         <color>ff1427a5</color>
-        <width>4.9875</width>
+        <width>5.5695</width>
       </LineStyle>
       <BalloonStyle>
         <text><![CDATA[<h3>$[name]</h3>]]></text>
       </BalloonStyle>
     </Style>
-    <StyleMap id="line-A52714-3325-nodesc">
+    <StyleMap id="line-A52714-3713-nodesc">
       <Pair>
         <key>normal</key>
-        <styleUrl>#line-A52714-3325-nodesc-normal</styleUrl>
+        <styleUrl>#line-A52714-3713-nodesc-normal</styleUrl>
       </Pair>
       <Pair>
         <key>highlight</key>
-        <styleUrl>#line-A52714-3325-nodesc-highlight</styleUrl>
+        <styleUrl>#line-A52714-3713-nodesc-highlight</styleUrl>
       </Pair>
     </StyleMap>
     <Folder>
-      <name>Line</name>
+      <name>Untitled layer</name>
       <Placemark>
-        <name>Test Line</name>
-        <styleUrl>#line-A52714-3325-nodesc</styleUrl>
+        <name>Line 1</name>
+        <styleUrl>#line-A52714-3713-nodesc</styleUrl>
         <LineString>
           <tessellate>1</tessellate>
           <coordinates>
-            -84.4030607,33.7761329,0
-            -84.4032029,33.7761429,0
-            -84.4032056,33.7761006,0
-            -84.4040009,33.7761418,0
-            -84.4039982,33.7761819,0
+            -84.4031566,33.7761447,0
+            -84.4032303,33.7761492,0
+            -84.4032344,33.7760968,0
+            -84.4040015,33.7761402,0
+            -84.4039974,33.776177,0
           </coordinates>
         </LineString>
       </Placemark>
       <Placemark>
-        <name>Arrival</name>
+        <name>Point 2</name>
         <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
         <Point>
           <coordinates>
-            -84.4039982,33.7761819,0
+            -84.4039974,33.7761882,0
           </coordinates>
         </Point>
       </Placemark>
