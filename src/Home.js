@@ -7,8 +7,7 @@ import {
 import NavBar from './components/NavBar';
 import Grid from './components/Grid';
 import LoginButton from './components/LoginButton';
-import Ticket from '@material-ui/icons/ConfirmationNumber';
-import Key from '@material-ui/icons/VpnKey';
+import EditIcon from '@material-ui/icons/Edit';
 
 const theme = createMuiTheme({
     pallette: {
@@ -57,11 +56,12 @@ function Home() {
     const classes = styles();
     return (
         <div className='Home'>
+            <h1>Login using your Google account, then input your car's license plate and your handicap needs.</h1>
             <LoginButton />
             <div className={`${classes.grid} ${classes.bigSpace}`}>
                 <Grid
                     icon={
-                        <Key
+                        <EditIcon
                             style={{
                                 fill: '#c32a2a',
                                 height: '125',
@@ -71,21 +71,7 @@ function Home() {
                     }
                     title=''
                     btnNavLink='/input_details'
-                    btnTitle='Park Your Car'
-                />
-                <Grid
-                    icon={
-                        <Ticket
-                            style={{
-                                fill: '#c32a2a',
-                                height: '125',
-                                width: '125',
-                            }}
-                        />
-                    }
-                    title=''
-                    btnNavLink='/find_your_car'
-                    btnTitle='Find Your Car'
+                    btnTitle='Add your Car Info'
                 />
             </div>
         </div>
