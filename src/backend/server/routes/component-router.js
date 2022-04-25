@@ -34,7 +34,7 @@ router.get('/nearest_empty', async (req, res) => {
                 // `select top 1 * from ${table_name} where (empty = 1 and handicap = 0) order by distance desc` // MSSQL
                 `select * from ${table_name} 
                 where (empty = 1 and handicap = 0) 
-                order by distance desc 
+                order by distance
                 limit 1`
             );
 
@@ -55,7 +55,7 @@ router.get('/nearest_empty_handicap', async (req, res) => {
                 // `select top 1 * from ${table_name} where (empty = 1 and handicap = 1) order by distance desc`   // MSSQL
                 `select * from ${table_name} 
                 where (empty = 1 and handicap = 1) 
-                order by distance desc 
+                order by distance  
                 limit 1`
             );
 
@@ -197,6 +197,29 @@ router.put('/park/:id/:lp', async (req, res) => {
                 // `update ${table_name} set empty = 0, licence_plate = @input_licence_plate, time_parked = @input_park_time where lot_id = @input_id` // MSSQL
                 `update ${table_name} set empty = 0, licence_plate = $1, time_parked = $2 where lot_id = $3`,
                 [req.params.lp, DateTime.now().toISO(), req.params.id]
+            );
+        res.status(200).json({
+            message: 'Success!',
+        });
+    } catch (err) {
+        res.status(500);
+        res.send(err.message);
+    }
+});
+
+// update parking lot distance
+router.put('/distance/:id/:dist', async (req, res) => {
+    try {
+        const pool = await poolPromise;
+        await pool
+            // .request()
+            // .input('input_id', sql.Int, req.params.id)
+            // .input('input_licence_plate', sql.NVarChar, req.params.lp)
+            // .input('input_park_time', sql.DateTime, DateTime.now().toISO())
+            .query(
+                // `update ${table_name} set empty = 0, licence_plate = @input_licence_plate, time_parked = @input_park_time where lot_id = @input_id` // MSSQL
+                `update ${table_name} set distance = $1 where lot_id = $2`,
+                [req.params.dist, req.params.id]
             );
         res.status(200).json({
             message: 'Success!',
