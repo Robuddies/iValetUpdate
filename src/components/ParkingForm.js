@@ -111,7 +111,7 @@ class ParkingForm extends React.Component {
                     Handicap parking
                 </label>
                 <br />
-                <input type='submit' value='Find parking' />
+                <input type='submit' value='Submit Info' />
             </form>
         );
     }

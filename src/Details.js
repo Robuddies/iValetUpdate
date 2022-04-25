@@ -6,7 +6,6 @@ import {
 } from '@material-ui/core/styles';
 import ParkingForm from './components/ParkingForm';
 import Grid from './components/Grid';
-import Ticket from '@material-ui/icons/ConfirmationNumber';
 import Key from '@material-ui/icons/VpnKey';
 
 
@@ -75,20 +74,6 @@ function Details() {
                     title=''
                     btnNavLink='/park_your_car'
                     btnTitle='Park Your Car'
-                />
-                <Grid
-                    icon={
-                        <Ticket
-                            style={{
-                                fill: '#c32a2a',
-                                height: '125',
-                                width: '125',
-                            }}
-                        />
-                    }
-                    title=''
-                    btnNavLink='/find_your_car'
-                    btnTitle='Find Your Car'
                 />
             </div>
         </div>
