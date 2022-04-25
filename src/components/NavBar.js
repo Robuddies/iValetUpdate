@@ -4,8 +4,7 @@ import CustomButton from './CustomButton';
 import { Toolbar, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-// import LoginButton from './LoginButton';
-// import LogoutButton from './LogoutButton';
+
 
 const styles = makeStyles({
     bar: {
@@ -56,7 +55,7 @@ function NavBar() {
                 </Link>
             </Typography>
             <Typography variant='h6' className={classes.menuItem}>
-                <Link to='/input_details' style={linkStyle}>
+                <Link to='/park_your_car' style={linkStyle}>
                     <b>Park Your Car</b>
                 </Link>
             </Typography>
@@ -66,8 +65,8 @@ function NavBar() {
                 </Link>
             </Typography>
             <Typography variant='h6' className={classes.menuItem}>
-                <Link to='/exit_parking_lot' style={linkStyle}>
-                    <b>Exit Parking Lot</b>
+                <Link to='/pay' style={linkStyle}>
+                    <b>Pay Here</b>
                 </Link>
             </Typography>
 

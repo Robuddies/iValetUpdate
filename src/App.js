@@ -10,6 +10,7 @@ import Home from './Home';
 import Find from './Find';
 import Park from './Park';
 import Exit from './Exit';
+import Cart from './Cart';
 import Details from './Details';
 import React from 'react';
 import { useEffect } from 'react';
@@ -84,6 +85,7 @@ function App() {
                         <Route path='/input_details' element={<Details />} />
                         <Route path='/find_your_car' element={<Find />} />
                         <Route path='/exit_parking_lot' element={<Exit />} />
+                        <Route path='/pay' element={<Cart />} />
                     </Routes>
                 </div>
             </ThemeProvider>

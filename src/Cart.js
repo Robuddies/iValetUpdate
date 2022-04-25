@@ -1,13 +1,11 @@
-import React from 'react';
+import React from 'react'
 import {
     createMuiTheme,
     ThemeProvider,
     makeStyles,
 } from '@material-ui/core/styles';
-import NavBar from './components/NavBar';
 import Grid from './components/Grid';
-import LoginButton from './components/LoginButton';
-import EditIcon from '@material-ui/icons/Edit';
+import CloseIcon from '@material-ui/icons/Close'
 
 const theme = createMuiTheme({
     pallette: {
@@ -32,6 +30,7 @@ const theme = createMuiTheme({
     },
 });
 
+
 const styles = makeStyles({
     wrapper: {
         width: '65%',
@@ -52,16 +51,45 @@ const styles = makeStyles({
     },
 });
 
-function Home() {
+
+function getLocation(){
+    if('geolocation' in navigator) {
+        navigator.geolocation.watchPosition((position) => {
+           const userLocation = {
+               lat: position.coords.latitude,
+               lng: position.coords.longitude,
+           };
+           return userLocation;
+       })
+    } else {
+       alert("Your browser may not support geolocation.")
+    }
+    
+}
+
+const mapContainerStyle ={
+    width:'320px',
+    height:'200px',
+};
+const center = {
+    lat:33.776222,
+    lng:-84.403926
+}
+
+
+
+function Cart() {
     const classes = styles();
     return (
-        <div className='Home'>
-            <h1>Login using your Google account, then input your car's license plate and your handicap needs.</h1>
-            <LoginButton />
+        <div>
+            <h1>Once you pay, feel free to exit the lot!</h1>
+            <center>
+                <h1>Cart stuff</h1>
+            </center>
             <div className={`${classes.grid} ${classes.bigSpace}`}>
                 <Grid
                     icon={
-                        <EditIcon
+                        <CloseIcon
                             style={{
                                 fill: '#c32a2a',
                                 height: '125',
@@ -70,12 +98,13 @@ function Home() {
                         />
                     }
                     title=''
-                    btnNavLink='/input_details'
-                    btnTitle='Add your Car Info'
+                    btnNavLink='/exit_parking_lot'
+                    btnTitle='Good Bye!'
                 />
-            </div>
+            </div>           
         </div>
+        
     );
 }
 
-export default Home;
+export default Cart
