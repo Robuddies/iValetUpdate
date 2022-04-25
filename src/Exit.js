@@ -45,7 +45,7 @@ function Exit() {
                     zoom={20} 
                     center={center} 
                 >
-                 <KmlLayer url="https://raw.githubusercontent.com/Robuddies/iValetUpdate/backend/KMLs/ParkCrc1.kml" />       
+                 <KmlLayer url="https://raw.githubusercontent.com/Robuddies/iValetUpdate/backend/KMLs/ExitCrc1.kml" />       
                 
                 <Marker position={getLocation()} />
                 </GoogleMap>
