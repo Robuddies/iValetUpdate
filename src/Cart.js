@@ -1,13 +1,11 @@
-import React from 'react';
-import Ticket from '@material-ui/icons/ConfirmationNumber';
-import {GoogleMap, useLoadScript, KmlLayer,Marker} from "@react-google-maps/api";
+import React from 'react'
 import {
     createMuiTheme,
     ThemeProvider,
     makeStyles,
 } from '@material-ui/core/styles';
 import Grid from './components/Grid';
-
+import CloseIcon from '@material-ui/icons/Close'
 
 const theme = createMuiTheme({
     pallette: {
@@ -80,34 +78,18 @@ const center = {
 
 
 
-function Park() {
+function Cart() {
     const classes = styles();
-    const {isLoaded,loadError} = useLoadScript({
-        googleMapsApiKey:"AIzaSyBrMNCKpLCtGTbMbC5LhQTtrq3Y727HE84"
-    });
-    if (loadError) return "Error loading Maps";
-    if (!isLoaded) return "Loading Maps";
-
-
     return (
         <div>
-            <h1>Parking spot #, will be marked as occupied on arrival. Please don't use another spot.</h1>
+            <h1>Once you pay, feel free to exit the lot!</h1>
             <center>
-                <GoogleMap 
-                    mapContainerStyle={mapContainerStyle} 
-                    zoom={20} 
-                    center={center} 
-                >
-                 <KmlLayer url="https://raw.githubusercontent.com/Robuddies/iValetUpdate/backend/KMLs/ParkCrc1.kml" />       
-                
-                <Marker position={getLocation()} />
-                </GoogleMap>
+                <h1>Cart stuff</h1>
             </center>
-            <h1>Don't remember where you parked? Click below to jog your memory.</h1>
             <div className={`${classes.grid} ${classes.bigSpace}`}>
                 <Grid
                     icon={
-                        <Ticket
+                        <CloseIcon
                             style={{
                                 fill: '#c32a2a',
                                 height: '125',
@@ -116,8 +98,8 @@ function Park() {
                         />
                     }
                     title=''
-                    btnNavLink='/find_your_car'
-                    btnTitle='Find Your Car'
+                    btnNavLink='/exit_parking_lot'
+                    btnTitle='Good Bye!'
                 />
             </div>           
         </div>
@@ -125,5 +107,4 @@ function Park() {
     );
 }
 
-export default Park;
-
+export default Cart
