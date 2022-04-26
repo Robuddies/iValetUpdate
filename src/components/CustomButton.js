@@ -2,6 +2,7 @@ import React from 'react'
 import { Button } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
 import { getThemeProps } from '@material-ui/styles';
+import { Link } from 'react-router-dom';
 
 const StyledButton = withStyles({
     root: {
@@ -27,9 +28,17 @@ const StyledButton = withStyles({
     },
 })(Button);
 
+const linkStyle = {
+    margin: "1rem",
+    textDecoration: "none",
+    color: '#ffffff'
+  };
+
 function CustomButton(props){
     return(
-        <StyledButton variant="contained">{props.txt}</StyledButton>
+        <Link to={props.Link} style={linkStyle}>
+            <StyledButton variant="contained">{props.txt}</StyledButton>
+        </Link>
     )
 }
 export default CustomButton

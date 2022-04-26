@@ -90,7 +90,7 @@ function Find() {
 
     return (
         <div>
-            <h1>Here's your car! Be careful of oncoming traffic.</h1>
+            <h2 style={{ fontFamily: "Montserrat", margin:50 }}>Here's your car! Be careful of oncoming traffic.</h2>
             <center>
                 <GoogleMap 
                     mapContainerStyle={mapContainerStyle} 
@@ -102,8 +102,8 @@ function Find() {
                 <Marker position={getLocation()} />
                 </GoogleMap>
             </center>
-            <h1>Before you go, we'll have to charge you a fee for parking with us.</h1>
-            <div className={`${classes.grid} ${classes.bigSpace}`}>
+            <h2 style={{ fontFamily: "Montserrat", margin:50 }}>Before you go, we'll have to charge you a fee for parking with us.</h2>
+            <div className={`${classes.grid}`}>
                 <Grid
                     icon={
                         <ShoppingCartIcon

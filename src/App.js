@@ -15,6 +15,7 @@ import Details from './Details';
 import React from 'react';
 import { useEffect } from 'react';
 import { gapi } from 'gapi-script';
+import Contact from './Contact';
 
 const client_Id =
     '817198085077-dc3u322nbisnl1llu3q72c65gkjmacpq.apps.googleusercontent.com';
@@ -86,6 +87,7 @@ function App() {
                         <Route path='/find_your_car' element={<Find />} />
                         <Route path='/exit_parking_lot' element={<Exit />} />
                         <Route path='/pay' element={<Cart />} />
+                        <Route path='/contact' element={<Contact />} />
                     </Routes>
                 </div>
             </ThemeProvider>

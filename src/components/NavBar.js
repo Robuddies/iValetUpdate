@@ -64,13 +64,8 @@ function NavBar() {
                     <b>Find Your Car</b>
                 </Link>
             </Typography>
-            <Typography variant='h6' className={classes.menuItem}>
-                <Link to='/pay' style={linkStyle}>
-                    <b>Pay Here</b>
-                </Link>
-            </Typography>
 
-            <CustomButton txt='Contact Us' />
+            <CustomButton Link='/contact'txt='Contact Us' />
         </Toolbar>
     );
 }

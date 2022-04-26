@@ -148,6 +148,7 @@ function ParkingForm() {
         }
     }
 
+<<<<<<< HEAD
     return (
         <form onSubmit={handleSubmit}>
             <label>
@@ -173,6 +174,35 @@ function ParkingForm() {
             <input type='submit' value='Submit Info' />
         </form>
     );
+=======
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <label style={{ fontFamily: "Montserrat" }}>
+                    Licence plate:
+                    <input
+                        type='text'
+                        value={this.state.value}
+                        onChange={this.handleChangeLicence}
+                    />
+                </label>
+                <br />
+                <br />
+                <label style={{ fontFamily: "Montserrat" }}>
+                    <input
+                        type='checkbox'
+                        value='Handicap'
+                        onChange={this.handleChangeHandicap}
+                    />
+                    Handicap parking
+                </label>
+                <br />
+                <br />
+                <input style={{ fontFamily: "Montserrat" }} size="50" type='submit' value='Submit Info'  />
+            </form>
+        );
+    }
+>>>>>>> 790ff0344bba8f5edb4e51621d8dc41ebbcfe798
 }
 
 export default ParkingForm;

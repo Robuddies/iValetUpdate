@@ -8,10 +8,10 @@ const styles = makeStyles({
        display: "flex",
        flexDirection: "column", 
        alignItems: "center", 
-       padding: "0 5rem 0 5rem"
+       padding: "0 0rem 0 0rem"
     }, 
     item: {
-       paddingTop: "1rem"
+       paddingTop: "0rem"
     }
 })
 

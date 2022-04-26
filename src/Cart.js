@@ -1,11 +1,11 @@
 import React from 'react'
+import { useState } from 'react';
 import {
     createMuiTheme,
     ThemeProvider,
     makeStyles,
 } from '@material-ui/core/styles';
-import Grid from './components/Grid';
-import CloseIcon from '@material-ui/icons/EmojiTransportation'
+import StripeContainer from './components/StripeContainer';
 
 const theme = createMuiTheme({
     pallette: {
@@ -54,28 +54,22 @@ const styles = makeStyles({
 
 function Cart() {
     const classes = styles();
+    const [showItem, setShowItem] = useState(false);
+
     return (
         <div>
-            <h1>Once you pay, feel free to exit the lot!</h1>
+            
             <center>
-                <h1>Cart stuff</h1>
+			{showItem ? (
+				<StripeContainer />
+			) : (
+				<>
+					<h2 style={{ fontFamily: "Montserrat"}}>$10.00</h2>
+					<button style={{ fontFamily: "Montserrat"}} onClick={() => setShowItem(true)}>Pay</button>
+				</>
+			)}
             </center>
-            <div className={`${classes.grid} ${classes.bigSpace}`}>
-                <Grid
-                    icon={
-                        <CloseIcon
-                            style={{
-                                fill: '#c32a2a',
-                                height: '125',
-                                width: '125',
-                            }}
-                        />
-                    }
-                    title=''
-                    btnNavLink='/exit_parking_lot'
-                    btnTitle='Good Bye!'
-                />
-            </div>           
+          
         </div>
         
     );

@@ -58,9 +58,9 @@ function Details() {
     const classes = styles();
     return (
         <div>
-            <h1>Input Details</h1>
+            <h2 style={{ fontFamily: "Montserrat", margin:50 }}>Input Details</h2>
             <ParkingForm></ParkingForm>
-            <div className={`${classes.grid} ${classes.bigSpace}`}>
+            <div className={`${classes.grid} `}>
                 <Grid
                     icon={
                         <Key

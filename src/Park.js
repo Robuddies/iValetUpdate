@@ -93,10 +93,10 @@ const Park = (props) => {
 
     return (
         <div>
-            <h1>
+            <h2 style={{ fontFamily: 'Montserrat', margin: 50 }}>
                 Parking spot #{state.lotId}, will be marked as occupied on
                 arrival. Please don't use another spot.
-            </h1>
+            </h2>
             <center>
                 <GoogleMap
                     mapContainerStyle={mapContainerStyle}
@@ -108,10 +108,10 @@ const Park = (props) => {
                     <Marker position={getLocation()} />
                 </GoogleMap>
             </center>
-            <h1>
+            <h2 style={{ fontFamily: 'Montserrat', margin: 50 }}>
                 Don't remember where you parked? Click below to jog your memory.
-            </h1>
-            <div className={`${classes.grid} ${classes.bigSpace}`}>
+            </h2>
+            <div className={`${classes.grid}`}>
                 <Grid
                     icon={
                         <Ticket
