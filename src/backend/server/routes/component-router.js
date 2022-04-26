@@ -230,4 +230,36 @@ router.put('/distance/:id/:dist', async (req, res) => {
     }
 });
 
+// reset database
+router.get('/reset', async (req, res) => {
+    try {
+        const pool = await poolPromise;
+        const result = await pool
+            // .request()
+            .query(`update ${table_name} set empty = 1, licence_plate = ''`);
+
+        res.status(200).json({ message: 'Database reset!' });
+    } catch (err) {
+        res.status(500);
+        res.send(err.message);
+    }
+});
+
+// fill lots
+router.get('/park_first_row', async (req, res) => {
+    try {
+        const pool = await poolPromise;
+        const result = await pool
+            // .request()
+            .query(
+                `update ${table_name} set empty = 0, licence_plate = 'ABC123' where lot_id < 39`
+            );
+
+        res.status(200).json({ message: 'Lots 0-38 filled!' });
+    } catch (err) {
+        res.status(500);
+        res.send(err.message);
+    }
+});
+
 module.exports = router;
