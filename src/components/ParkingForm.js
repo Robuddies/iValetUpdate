@@ -177,7 +177,7 @@ function ParkingForm() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <label>
+            <label style={{ fontFamily: "Montserrat"}}>
                 Licence plate:
                 <input
                     type='text'
@@ -187,7 +187,8 @@ function ParkingForm() {
                 />
             </label>
             <br />
-            <label>
+            <br />
+            <label style={{ fontFamily: "Montserrat"}}>
                 <input
                     type='checkbox'
                     value='Handicap'
@@ -197,7 +198,8 @@ function ParkingForm() {
                 Handicap parking
             </label>
             <br />
-            <input type='submit' value='Submit Info' />
+            <br />
+            <input style={{ fontFamily: "Montserrat"}} type='submit' value='Submit Info' />
         </form>
     );
 }
