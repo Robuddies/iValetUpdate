@@ -1,13 +1,19 @@
 import React from 'react';
 import Ticket from '@material-ui/icons/ConfirmationNumber';
-import {GoogleMap, useLoadScript, KmlLayer,Marker} from "@react-google-maps/api";
+import {
+    GoogleMap,
+    useLoadScript,
+    KmlLayer,
+    Marker,
+} from '@react-google-maps/api';
 import {
     createMuiTheme,
     ThemeProvider,
     makeStyles,
 } from '@material-ui/core/styles';
 import Grid from './components/Grid';
-
+import apis from './backend/api';
+import { useLocation } from 'react-router-dom';
 
 const theme = createMuiTheme({
     pallette: {
@@ -32,7 +38,6 @@ const theme = createMuiTheme({
     },
 });
 
-
 const styles = makeStyles({
     wrapper: {
         width: '65%',
@@ -53,57 +58,59 @@ const styles = makeStyles({
     },
 });
 
-
-function getLocation(){
-    if('geolocation' in navigator) {
+function getLocation() {
+    if ('geolocation' in navigator) {
         navigator.geolocation.watchPosition((position) => {
-           const userLocation = {
-               lat: position.coords.latitude,
-               lng: position.coords.longitude,
-           };
-           return userLocation;
-       })
+            const userLocation = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+            };
+            return userLocation;
+        });
     } else {
-       alert("Your browser may not support geolocation.")
+        alert('Your browser may not support geolocation.');
     }
-    
 }
 
-const mapContainerStyle ={
-    width:'320px',
-    height:'200px',
+const mapContainerStyle = {
+    width: '320px',
+    height: '200px',
 };
 const center = {
-    lat:33.776222,
-    lng:-84.403926
-}
+    lat: 33.776222,
+    lng: -84.403926,
+};
 
-
-
-function Park() {
+const Park = (props) => {
     const classes = styles();
-    const {isLoaded,loadError} = useLoadScript({
-        googleMapsApiKey:"AIzaSyBrMNCKpLCtGTbMbC5LhQTtrq3Y727HE84"
+    const { isLoaded, loadError } = useLoadScript({
+        googleMapsApiKey: 'AIzaSyBrMNCKpLCtGTbMbC5LhQTtrq3Y727HE84',
     });
-    if (loadError) return "Error loading Maps";
-    if (!isLoaded) return "Loading Maps";
-
+    const { state } = useLocation();
+    // alert(state);
+    if (loadError) return 'Error loading Maps';
+    if (!isLoaded) return 'Loading Maps';
 
     return (
         <div>
-            <h1>Parking spot #, will be marked as occupied on arrival. Please don't use another spot.</h1>
+            <h1>
+                Parking spot #{state.lotId}, will be marked as occupied on
+                arrival. Please don't use another spot.
+            </h1>
             <center>
-                <GoogleMap 
-                    mapContainerStyle={mapContainerStyle} 
-                    zoom={20} 
-                    center={center} 
+                <GoogleMap
+                    mapContainerStyle={mapContainerStyle}
+                    zoom={20}
+                    center={center}
                 >
-                 <KmlLayer url="https://raw.githubusercontent.com/Robuddies/iValetUpdate/backend/KMLs/ParkCrc1.kml" />       
-                
-                <Marker position={getLocation()} />
+                    <KmlLayer url='https://raw.githubusercontent.com/Robuddies/iValetUpdate/backend/KMLs/ParkCrc1.kml' />
+
+                    <Marker position={getLocation()} />
                 </GoogleMap>
             </center>
-            <h1>Don't remember where you parked? Click below to jog your memory.</h1>
+            <h1>
+                Don't remember where you parked? Click below to jog your memory.
+            </h1>
             <div className={`${classes.grid} ${classes.bigSpace}`}>
                 <Grid
                     icon={
@@ -119,11 +126,9 @@ function Park() {
                     btnNavLink='/find_your_car'
                     btnTitle='Find Your Car'
                 />
-            </div>           
+            </div>
         </div>
-        
     );
-}
+};
 
 export default Park;
-

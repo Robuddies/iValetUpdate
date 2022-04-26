@@ -1,44 +1,49 @@
-import { AlternateEmail } from '@material-ui/icons';
-import React from 'react';
+import { AddAlertTwoTone, AlternateEmail } from '@material-ui/icons';
+import React, { useState } from 'react';
 import api from '../backend/api';
+import { useNavigate } from 'react-router-dom';
 
-class ParkingForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { licence: '', handicap: false };
+function ParkingForm() {
+    const initialState = {
+        licence: '',
+        handicap: false,
+        lotId: null,
+    };
+    const [licence, setLicence] = useState('');
+    const [handicap, setHandicap] = useState(false);
+    const [lotId, setLotId] = useState(1);
 
-        this.handleChangeLicence = this.handleChangeLicence.bind(this);
-        this.handleChangeHandicap = this.handleChangeHandicap.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+    let navigate = useNavigate();
 
-        this.parkVehicle = this.parkVehicle.bind(this);
-    }
+    const clearState = () => {
+        setLicence(initialState.licence);
+        setHandicap(initialState.handicap);
+        setLotId(initialState.lotId);
+    };
 
-    handleChangeLicence(event) {
-        this.setState({ licence: event.target.value });
-    }
+    const handleChangeLicence = (event) => {
+        setLicence(event.target.value);
+    };
 
-    handleChangeHandicap(event) {
-        this.setState({ handicap: event.target.checked });
-    }
+    const handleChangeHandicap = (event) => {
+        setHandicap(event.target.checked);
+    };
 
-    async handleSubmit(event) {
-        if (this.state.licence === '')
-            alert('Please provide your licence plate.');
+    async function handleSubmit(event) {
+        if (licence === '') alert('Please provide your licence plate.');
         else {
-            alert('A plate was submitted: ' + this.state.licence);
-            // event.preventDefault();
-            await this.parkVehicle().catch((error) => {
+            // alert('A plate was submitted: ' + this.state.licence);
+            event.preventDefault();
+            await parkVehicle().catch((error) => {
                 console.log(error.message);
                 alert(error.message);
             });
         }
     }
 
-    async parkVehicle() {
-        if (this.state.licence === '')
-            alert('Please provide your licence plate.');
-        else if (this.state.handicap) {
+    async function parkVehicle() {
+        if (licence === '') alert('Please provide your licence plate.');
+        else if (handicap) {
             await api
                 .getNearestEmptyHandicap()
                 .then((response) => {
@@ -64,23 +69,28 @@ class ParkingForm extends React.Component {
                     // PostgreSQL
                     const rows = response.data.rows;
                     if (rows === undefined) {
-                        alert('Error in results. Please try again.');
+                        // alert('Error in results. Please try again.');
+                        throw new Error('Error in results. Please try again.');
                     } else if (rows.length === 0) {
                         alert('No handicap spots available.');
                     } else {
                         const result = rows[0];
                         const { lot_id } = result;
                         if (lot_id) {
-                            alert('Park at lot ' + lot_id);
-                            return lot_id;
+                            // alert('Park at lot ' + lot_id);
+                            setLotId(lot_id);
+                            navigate('/park_your_car', {
+                                state: {
+                                    licence: licence,
+                                    lotId: lot_id,
+                                    handicap: handicap,
+                                },
+                            });
                         } else {
-                            alert('Lot ID not found.');
+                            // alert('Lot ID not found.');
                             throw new Error('Lot ID not found.');
                         }
                     }
-                })
-                .then((lot_id) => {
-                    // TODO
                 })
                 .catch((error) => {
                     console.log(error.message);
@@ -108,17 +118,25 @@ class ParkingForm extends React.Component {
                     // PostgreSQL
                     const rows = response.data.rows;
                     if (rows === undefined) {
-                        alert('Error in results. Please try again.');
+                        // alert('Error in results. Please try again.');
+                        throw new Error('Error in results. Please try again.');
                     } else if (rows.length === 0) {
-                        alert('No handicap spots available.');
+                        alert('Carpark full.');
                     } else {
                         const result = rows[0];
                         const { lot_id } = result;
                         if (lot_id) {
-                            alert('Park at lot ' + lot_id);
-                            return lot_id;
+                            // alert('Park at lot ' + lot_id);
+                            setLotId(lot_id);
+                            navigate('/park_your_car', {
+                                state: {
+                                    licence: licence,
+                                    lotId: lot_id,
+                                    handicap: handicap,
+                                },
+                            });
                         } else {
-                            alert('Lot ID not found.');
+                            // alert('Lot ID not found.');
                             throw new Error('Lot ID not found.');
                         }
                     }
@@ -130,31 +148,31 @@ class ParkingForm extends React.Component {
         }
     }
 
-    render() {
-        return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Licence plate:
-                    <input
-                        type='text'
-                        value={this.state.value}
-                        onChange={this.handleChangeLicence}
-                    />
-                </label>
-                <br />
-                <label>
-                    <input
-                        type='checkbox'
-                        value='Handicap'
-                        onChange={this.handleChangeHandicap}
-                    />
-                    Handicap parking
-                </label>
-                <br />
-                <input type='submit' value='Submit Info' />
-            </form>
-        );
-    }
+    return (
+        <form onSubmit={handleSubmit}>
+            <label>
+                Licence plate:
+                <input
+                    type='text'
+                    name='licence'
+                    value={licence}
+                    onChange={handleChangeLicence}
+                />
+            </label>
+            <br />
+            <label>
+                <input
+                    type='checkbox'
+                    value='Handicap'
+                    checked={handicap}
+                    onChange={handleChangeHandicap}
+                />
+                Handicap parking
+            </label>
+            <br />
+            <input type='submit' value='Submit Info' />
+        </form>
+    );
 }
 
 export default ParkingForm;
