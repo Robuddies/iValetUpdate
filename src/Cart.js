@@ -5,7 +5,7 @@ import {
     makeStyles,
 } from '@material-ui/core/styles';
 import Grid from './components/Grid';
-import CloseIcon from '@material-ui/icons/Close'
+import CloseIcon from '@material-ui/icons/EmojiTransportation'
 
 const theme = createMuiTheme({
     pallette: {
@@ -50,32 +50,6 @@ const styles = makeStyles({
         flexWrap: 'wrap',
     },
 });
-
-
-function getLocation(){
-    if('geolocation' in navigator) {
-        navigator.geolocation.watchPosition((position) => {
-           const userLocation = {
-               lat: position.coords.latitude,
-               lng: position.coords.longitude,
-           };
-           return userLocation;
-       })
-    } else {
-       alert("Your browser may not support geolocation.")
-    }
-    
-}
-
-const mapContainerStyle ={
-    width:'320px',
-    height:'200px',
-};
-const center = {
-    lat:33.776222,
-    lng:-84.403926
-}
-
 
 
 function Cart() {
