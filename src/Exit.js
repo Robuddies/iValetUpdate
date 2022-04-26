@@ -38,7 +38,7 @@ function Exit() {
 
     return (
         <div>
-            <h1>Thank you for parking with us! Exit the Parking Lot.</h1>
+            <h2 style={{ fontFamily: "Montserrat", margin:50 }}>Thank you for parking with us! Exit the Parking Lot.</h2>
             <center>
                 <GoogleMap 
                     mapContainerStyle={mapContainerStyle} 
@@ -50,6 +50,7 @@ function Exit() {
                 <Marker position={getLocation()} />
                 </GoogleMap>
             </center>
+            <br />
             <LogoutButton />
           
         </div>

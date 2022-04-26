@@ -56,7 +56,7 @@ function Home() {
     const classes = styles();
     return (
         <div className='Home'>
-            <h2 style={{ fontFamily: "Montserrat", margin:50 }}>Login using your Google account, then input your car's license plate and your handicap needs.</h2>
+            <h2 style={{ fontFamily: "Montserrat"}}>Login using your Google account, then input your car's license plate and your handicap needs.</h2>
             <LoginButton />
             <div className={`${classes.grid}`}>
                 <Grid
