@@ -12,8 +12,7 @@ import {
     makeStyles,
 } from '@material-ui/core/styles';
 import Grid from './components/Grid';
-import apis from './backend/api';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const theme = createMuiTheme({
     pallette: {
@@ -81,13 +80,13 @@ const center = {
     lng: -84.403926,
 };
 
-const Park = (props) => {
+function Park() {
     const classes = styles();
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: 'AIzaSyBrMNCKpLCtGTbMbC5LhQTtrq3Y727HE84',
     });
     const { state } = useLocation();
-    // alert(state);
+
     if (loadError) return 'Error loading Maps';
     if (!isLoaded) return 'Loading Maps';
 
@@ -124,11 +123,12 @@ const Park = (props) => {
                     }
                     title=''
                     btnNavLink='/find_your_car'
+                    btnNavState={{ state: state }}
                     btnTitle='Find Your Car'
                 />
             </div>
         </div>
     );
-};
+}
 
 export default Park;

@@ -84,7 +84,7 @@ function App() {
                         <Route path='/' element={<Home />} />
                         <Route path='/park_your_car' element={<Park />} />
                         <Route path='/input_details' element={<Details />} />
-                        <Route path='/find_your_car' element={<Find />} />
+                        <Route path='/find_your_car/' element={<Find />} />
                         <Route path='/exit_parking_lot' element={<Exit />} />
                         <Route path='/pay' element={<Cart />} />
                         <Route path='/contact' element={<Contact />} />
