@@ -160,6 +160,7 @@ function ParkingForm() {
                 />
             </label>
             <br />
+            <br />
             <label style={{ fontFamily: "Montserrat"}}>
                 <input
                     type='checkbox'
@@ -169,6 +170,7 @@ function ParkingForm() {
                 />
                 Handicap parking
             </label>
+            <br />
             <br />
             <input style={{ fontFamily: "Montserrat"}} type='submit' value='Submit Info' />
         </form>
