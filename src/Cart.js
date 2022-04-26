@@ -58,14 +58,14 @@ function Cart() {
 
     return (
         <div>
-            <h1>Once you pay, feel free to exit the lot!</h1>
+            
             <center>
 			{showItem ? (
 				<StripeContainer />
 			) : (
 				<>
-					<h3>$10.00</h3>
-					<button onClick={() => setShowItem(true)}>Pay</button>
+					<h2 style={{ fontFamily: "Montserrat"}}>$10.00</h2>
+					<button style={{ fontFamily: "Montserrat"}} onClick={() => setShowItem(true)}>Pay</button>
 				</>
 			)}
             </center>

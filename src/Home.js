@@ -56,16 +56,16 @@ function Home() {
     const classes = styles();
     return (
         <div className='Home'>
-            <h1>Login using your Google account, then input your car's license plate and your handicap needs.</h1>
+            <h2 style={{ fontFamily: "Montserrat", margin:50 }}>Login using your Google account, then input your car's license plate and your handicap needs.</h2>
             <LoginButton />
-            <div className={`${classes.grid} ${classes.bigSpace}`}>
+            <div className={`${classes.grid}`}>
                 <Grid
                     icon={
                         <EditIcon
                             style={{
                                 fill: '#c32a2a',
-                                height: '125',
-                                width: '125',
+                                height: '100',
+                                width: '100',
                             }}
                         />
                     }

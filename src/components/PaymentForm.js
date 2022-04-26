@@ -23,8 +23,8 @@ const CARD_OPTIONS ={
             "::placeholder": {color:"87bbfd"}
         },
         invalid:{
-            iconColor:"#ffc7ee",
-            color:"#ffc7ee"
+            iconColor:"#c32a2a",
+            color:"#c32a2a"
         }
     }
 }
@@ -111,17 +111,21 @@ function PaymentForm() {
     return (
         <>
         {!success ? 
+        
         <form onSubmit={handleSubmit}>
+            <h2 style={{ fontFamily: "Montserrat", margin:50 }}>Fill your credit card information below.</h2>
             <fieldset className="FormGroup">
                 <div className="FormRow">
+                    
                     <CardElement options={CARD_OPTIONS}/>
                 </div>
             </fieldset>
-            <button>Pay</button>
+            <button style={{ fontFamily: "Montserrat"}}>Pay</button>
         </form>
         :
        <div>
-            <div className={`${classes.grid} ${classes.bigSpace}`}>
+           <h2 style={{ fontFamily: "Montserrat", margin:50 }}>Feel free to exit the CRC parking lot.</h2>
+            <div className={`${classes.grid}`}>
                 <Grid
                     icon={
                         <CloseIcon

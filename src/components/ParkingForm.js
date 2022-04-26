@@ -133,7 +133,7 @@ class ParkingForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <label>
+                <label style={{ fontFamily: "Montserrat" }}>
                     Licence plate:
                     <input
                         type='text'
@@ -142,7 +142,8 @@ class ParkingForm extends React.Component {
                     />
                 </label>
                 <br />
-                <label>
+                <br />
+                <label style={{ fontFamily: "Montserrat" }}>
                     <input
                         type='checkbox'
                         value='Handicap'
@@ -151,7 +152,8 @@ class ParkingForm extends React.Component {
                     Handicap parking
                 </label>
                 <br />
-                <input type='submit' value='Submit Info' />
+                <br />
+                <input style={{ fontFamily: "Montserrat" }} size="50" type='submit' value='Submit Info'  />
             </form>
         );
     }
