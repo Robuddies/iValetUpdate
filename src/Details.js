@@ -60,22 +60,6 @@ function Details() {
         <div>
             <h2 style={{ fontFamily: "Montserrat", margin:50 }}>Input Details</h2>
             <ParkingForm></ParkingForm>
-            <div className={`${classes.grid} `}>
-                <Grid
-                    icon={
-                        <Key
-                            style={{
-                                fill: '#c32a2a',
-                                height: '125',
-                                width: '125',
-                            }}
-                        />
-                    }
-                    title=''
-                    btnNavLink='/park_your_car'
-                    btnTitle='Park Your Car'
-                />
-            </div>
         </div>
     );
 }
