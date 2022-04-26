@@ -42,6 +42,7 @@ class ParkingForm extends React.Component {
             await api
                 .getNearestEmptyHandicap()
                 .then((response) => {
+                    /** // MSSQL
                     const recordset = response.data.recordset;
                     if (recordset === undefined) {
                         alert('Error. Please try again.');
@@ -49,6 +50,25 @@ class ParkingForm extends React.Component {
                         alert('No handicap spots available.');
                     } else {
                         const result = recordset[0];
+                        const { lot_id } = result;
+                        if (lot_id) {
+                            alert('Park at lot ' + lot_id);
+                            return lot_id;
+                        } else {
+                            alert('Lot ID not found.');
+                            throw new Error('Lot ID not found.');
+                        }
+                    }
+                     */
+
+                    // PostgreSQL
+                    const rows = response.data.rows;
+                    if (rows === undefined) {
+                        alert('Error in results. Please try again.');
+                    } else if (rows.length === 0) {
+                        alert('No handicap spots available.');
+                    } else {
+                        const result = rows[0];
                         const { lot_id } = result;
                         if (lot_id) {
                             alert('Park at lot ' + lot_id);
@@ -70,6 +90,7 @@ class ParkingForm extends React.Component {
             await api
                 .getNearestEmpty()
                 .then((response) => {
+                    /** // MSSQL
                     const recordset = response.data.recordset;
                     if (recordset === undefined) {
                         alert('Error. Please try again.');
@@ -81,6 +102,25 @@ class ParkingForm extends React.Component {
                         const { lot_id } = result;
                         if (lot_id) alert('Park at lot ' + lot_id);
                         else alert('Lot ID not found.');
+                    }
+                    */
+
+                    // PostgreSQL
+                    const rows = response.data.rows;
+                    if (rows === undefined) {
+                        alert('Error in results. Please try again.');
+                    } else if (rows.length === 0) {
+                        alert('No handicap spots available.');
+                    } else {
+                        const result = rows[0];
+                        const { lot_id } = result;
+                        if (lot_id) {
+                            alert('Park at lot ' + lot_id);
+                            return lot_id;
+                        } else {
+                            alert('Lot ID not found.');
+                            throw new Error('Lot ID not found.');
+                        }
                     }
                 })
                 .catch((error) => {

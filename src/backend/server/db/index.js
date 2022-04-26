@@ -20,7 +20,7 @@ const config = {
 const poolPromise = new Pool(config)
     .connect()
     .then((pool) => {
-        console.log('Connected to PostgresSQL');
+        console.log('Connected to PostgreSQL');
         return pool;
     })
     .catch((err) =>
