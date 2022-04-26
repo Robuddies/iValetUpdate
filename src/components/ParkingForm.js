@@ -1,4 +1,3 @@
-import { AddAlertTwoTone, AlternateEmail } from '@material-ui/icons';
 import React, { useState } from 'react';
 import api from '../backend/api';
 import { useNavigate } from 'react-router-dom';
@@ -79,18 +78,32 @@ function ParkingForm() {
                         if (lot_id) {
                             // alert('Park at lot ' + lot_id);
                             setLotId(lot_id);
-                            navigate('/park_your_car', {
-                                state: {
-                                    licence: licence,
-                                    lotId: lot_id,
-                                    handicap: handicap,
-                                },
-                            });
+                            return lot_id;
                         } else {
                             // alert('Lot ID not found.');
                             throw new Error('Lot ID not found.');
                         }
                     }
+                })
+                .then(async (lot_id) => {
+                    return await api
+                        .enterLotByLicence(lot_id, licence)
+                        .then(() => {
+                            return lot_id;
+                        })
+                        .catch((error) => {
+                            console.log(error.message);
+                            alert(error.message);
+                        });
+                })
+                .then((lot_id) => {
+                    navigate('/park_your_car', {
+                        state: {
+                            licence: licence,
+                            lotId: lot_id,
+                            handicap: handicap,
+                        },
+                    });
                 })
                 .catch((error) => {
                     console.log(error.message);
@@ -128,18 +141,32 @@ function ParkingForm() {
                         if (lot_id) {
                             // alert('Park at lot ' + lot_id);
                             setLotId(lot_id);
-                            navigate('/park_your_car', {
-                                state: {
-                                    licence: licence,
-                                    lotId: lot_id,
-                                    handicap: handicap,
-                                },
-                            });
+                            return lot_id;
                         } else {
                             // alert('Lot ID not found.');
                             throw new Error('Lot ID not found.');
                         }
                     }
+                })
+                .then(async (lot_id) => {
+                    return await api
+                        .enterLotByLicence(lot_id, licence)
+                        .then(() => {
+                            return lot_id;
+                        })
+                        .catch((error) => {
+                            console.log(error.message);
+                            alert(error.message);
+                        });
+                })
+                .then((lot_id) => {
+                    navigate('/park_your_car', {
+                        state: {
+                            licence: licence,
+                            lotId: lot_id,
+                            handicap: handicap,
+                        },
+                    });
                 })
                 .catch((error) => {
                     console.log(error.message);
