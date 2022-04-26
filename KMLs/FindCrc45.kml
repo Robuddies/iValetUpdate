@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>FindCrc45</name>
+    <description>Crc custom</description>
+    <Style id="icon-1899-FFD600-nodesc-normal">
+      <IconStyle>
+        <color>ff00d6ff</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-FFD600-nodesc-highlight">
+      <IconStyle>
+        <color>ff00d6ff</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1899-FFD600-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-FFD600-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-FFD600-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="line-A52714-3325-nodesc-normal">
+      <LineStyle>
+        <color>ff1427a5</color>
+        <width>3.325</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="line-A52714-3325-nodesc-highlight">
+      <LineStyle>
+        <color>ff1427a5</color>
+        <width>4.9875</width>
+      </LineStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="line-A52714-3325-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-A52714-3325-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-A52714-3325-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Folder>
+      <name>Line</name>
+      <Placemark>
+        <name>Test Line</name>
+        <styleUrl>#line-A52714-3325-nodesc</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            -84.4029883,33.7760181,0
+            -84.4030902,33.776037,0
+            -84.4031627,33.7760403,0
+            -84.4031841,33.7760627,0
+            -84.4041484,33.7761479,0
+            -84.4041444,33.7761819,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      <Placemark>
+        <name>Arrival</name>
+        <styleUrl>#icon-1899-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -84.4041444,33.7761891,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>
